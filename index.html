@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container"><h1>Personal Expense Tracker</h1></div>
+  </nav>
+
+  <main class="container">
+    <header class="page-heading">
+      <h2>My Financial Dashboard</h2>
+      <p>Keep track of your income and expenses in one place.</p>
+    </header>
+
+    <section class="summary" aria-label="Financial summary">
+      <div class="summary-card income-card">
+        <h3>Total Income</h3>
+        <p id="totalIncome">LKR 0.00</p>
+      </div>
+      <div class="summary-card expense-card">
+        <h3>Total Expenses</h3>
+        <p id="totalExpenses">LKR 0.00</p>
+      </div>
+      <div class="summary-card balance-card">
+        <h3>Current Balance</h3>
+        <p id="currentBalance">LKR 0.00</p>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="formHeading">
+      <h2 id="formHeading">Add a Transaction</h2>
+      <form id="transactionForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="type">Transaction Type</label>
+            <select id="type" required>
+              <option value="">Select type</option>
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="description">Description</label>
+            <input id="description" type="text" maxlength="100" placeholder="e.g. Lunch" required>
+          </div>
+          <div class="field">
+            <label for="amount">Amount (LKR)</label>
+            <input id="amount" type="number" min="0.01" step="0.01" placeholder="e.g. 800" required>
+          </div>
+          <div class="field">
+            <label for="category">Category</label>
+            <select id="category" required>
+              <option value="">Select category</option>
+              <option value="Allowance">Allowance</option>
+              <option value="Salary">Salary</option>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Education">Education</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Bills">Bills</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="date">Date</label>
+            <input id="date" type="date" required>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Add Transaction</button>
+          <button type="reset" class="btn secondary">Clear Form</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="historyHeading">
+      <h2 id="historyHeading">Transaction History</h2>
+      <div class="history-controls">
+        <div class="field">
+          <label for="filter">Filter Transactions</label>
+          <select id="filter">
+            <option value="all">All Transactions</option>
+            <option value="income">Income Only</option>
+            <option value="expense">Expenses Only</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="search">Search Transactions</label>
+          <input id="search" type="search" placeholder="Search description or category">
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th><th>Description</th><th>Type</th><th>Category</th><th>Amount (LKR)</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="transactionTable"></tbody>
+        </table>
+      </div>
+      <p id="emptyMessage" class="empty-message">No transactions found.</p>
+    </section>
+  </main>
+  <footer>Personal Expense Tracker | University Student Project</footer>
+</body>
+</html>
